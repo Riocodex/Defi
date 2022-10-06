@@ -171,48 +171,6 @@
       "artifacts": [
         "DataTypes"
       ]
-    },
-    "C:\\Users\\Onwuka Rosario\\blockchain\\defi\\contracts\\interfaces\\ILendingPoolAddressesProvider.sol": {
-      "lastModificationDate": 1665021203390,
-      "contentHash": "349b2b29065b6e4360bfc83355d0f76c",
-      "sourceName": "contracts/interfaces/ILendingPoolAddressesProvider.sol",
-      "solcConfig": {
-        "version": "0.6.12",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata",
-                "devdoc",
-                "userdoc",
-                "storageLayout",
-                "evm.gasEstimates"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": true
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.6.12"
-      ],
-      "artifacts": [
-        "ILendingPoolAddressesProvider"
-      ]
     }
   }
 }

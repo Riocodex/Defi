@@ -4,7 +4,13 @@ const { getWeth } = require("../scripts/getWeth")
 async function main(){
     await getWeth()
     const { deployer } = await getNamedAccounts()
+    //now we need to start interacting with the aave protocol
+    const lendingPool = await getLendingPool(deployer)
+    console.log(`Lending Pool address ${lendingPool.address}`)
     
+    //deposit! 
+     const wethTokenAddress ="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+    //approve
 }
 //now we need to start interacting with the aave protocol
     //lending pool address:0xB53C1a33016B2DC2fF3653530bfF1848a515c8c5
@@ -32,6 +38,9 @@ async function getLendingPool(account){
             account
     )
     return lendingPool
+}
+async function approveErc20(contractAddress , spenderAddress , amountToSpend , account){
+    const erc20Token = await ethers.getContractAt("")
 }
 main()
     .then(() =>process.exit(0))

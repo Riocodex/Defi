@@ -20,7 +20,32 @@ async function main(){
     //now calling the deposit function with the parameters
     await lendingPool.deposit(wethTokenAddress , AMOUNT , deployer , 0)
     console.log("Deposited!!!")
+
+
+    //borrow time!
+    //here we need to know:
+    // how much we borrowed, 
+    //how much we have as collateral,
+    //how much we can borrow 
+
+    let { availableBorrowsETH , totalDebtETH } = await getBorrowUserData(
+        lendingPool , deployer
+    )
 }
+
+async function getBorrowUserData(lendingPool , account ){
+    const { 
+        totalCollateralETH , 
+        totalDebtETH , 
+        availableBorrowsETH 
+    } = await lendingPool.getUserAccountData(account)
+    console.log(`You have ${totalCollateralETH} worth of ETH deposited.`);
+    console.log(`You have ${totalDebtETH} worth of ETH borrowed`);
+    console.log(`You can borrow ${availableBorrowsETH} worth of ETH`) 
+    return { availableBorrowsETH , totalDebtETH }
+}
+
+
 //now we need to start interacting with the aave protocol
     //lending pool address:0xB53C1a33016B2DC2fF3653530bfF1848a515c8c5
 //so basically we got a smartcontract that reveals 

@@ -171,6 +171,48 @@
       "artifacts": [
         "DataTypes"
       ]
+    },
+    "C:\\Users\\Onwuka Rosario\\blockchain\\defi\\contracts\\interfaces\\IERC20.sol": {
+      "lastModificationDate": 1665025980395,
+      "contentHash": "cfa1ae832e2a3e92f2ea334e64b25c70",
+      "sourceName": "contracts/interfaces/IERC20.sol",
+      "solcConfig": {
+        "version": "0.6.12",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.6.6"
+      ],
+      "artifacts": [
+        "IERC20"
+      ]
     }
   }
 }

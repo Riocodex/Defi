@@ -1,5 +1,9 @@
+//for better understanding read the docs below
+//https://docs.aave.com/developers/v/2.0/the-core-protocol/addresses-provider/ilendingpooladdressesprovider
+//https://docs.aave.com/developers/v/2.0/the-core-protocol/lendingpool/ilendingpool
+
 const { getNamedAccounts } = require("hardhat")
-const { getWeth } = require("../scripts/getWeth")
+const { getWeth , AMOUNT} = require("../scripts/getWeth")
 
 async function main(){
     await getWeth()
@@ -11,6 +15,11 @@ async function main(){
     //deposit! 
      const wethTokenAddress ="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
     //approve
+    await approveErc20(wethTokenAddress , lendingPool.address , AMOUNT , deployer)
+    console.log("depositing..........")
+    //now calling the deposit function with the parameters
+    await lendingPool.deposit(wethTokenAddress , AMOUNT , deployer , 0)
+    console.log("Deposited!!!")
 }
 //now we need to start interacting with the aave protocol
     //lending pool address:0xB53C1a33016B2DC2fF3653530bfF1848a515c8c5
@@ -39,8 +48,20 @@ async function getLendingPool(account){
     )
     return lendingPool
 }
-async function approveErc20(contractAddress , spenderAddress , amountToSpend , account){
-    const erc20Token = await ethers.getContractAt("")
+async function approveErc20(
+    erc20Address ,
+     spenderAddress , 
+     amountToSpend ,
+      account
+){
+    const erc20Token = await ethers.getContractAt(
+        "IERC20" , 
+        erc20Address,
+        account
+    )
+    const tx = await erc20Token.approve(spenderAddress , amountToSpend)
+    await tx.wait(1)
+    console.log("Approved!")
 }
 main()
     .then(() =>process.exit(0))

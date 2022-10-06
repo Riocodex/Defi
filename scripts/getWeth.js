@@ -22,4 +22,4 @@ async function getWeth(){
 
 }
 
-module.exports = { getWeth }
+module.exports = { getWeth  , AMOUNT}

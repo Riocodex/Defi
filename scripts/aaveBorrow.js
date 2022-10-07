@@ -21,21 +21,51 @@ async function main(){
     await lendingPool.deposit(wethTokenAddress , AMOUNT , deployer , 0)
     console.log("Deposited!!!")
   
-    //to get how much we want to borrow in eth and convert it to dai
+
+    let { availableBorrowsETH , totalDebtETH } = await getBorrowUserData(
+        lendingPool , deployer
+    )
+    
+//you can only borrow in wei..so we get dai first..because with dai we can convert to wei 
+//so we first created a function that checks eth to dai price
+        //to get how much we want to borrow in eth and convert it to dai
     
     //borrow time!
     //here we need to know:
     // how much we borrowed, 
     //how much we have as collateral,
     //how much we can borrow 
-
-    let { availableBorrowsETH , totalDebtETH } = await getBorrowUserData(
-        lendingPool , deployer
-    )
     const daiPrice = await getDaiPrice()
-    const amountDaiToBorrow =
-            availableBorrowsETH.toString() * 0.95 * (1/daiPrice.toNumber())
-    console.log(`You can borrow ${amountDaiToBorrow} DAI`)
+    const daiTokenAddress = "0x6B175474E89094C44Da98b954EedeAC495271d0F"
+    const amountDaiToBorrow = availableBorrowsETH.toString() * 0.95 * (1 / daiPrice.toNumber())
+    const amountDaiToBorrowWei = ethers.utils.parseEther(amountDaiToBorrow.toString())
+    console.log(`You can borrow ${amountDaiToBorrow.toString()} DAI`)
+    await borrowDai(
+        daiTokenAddress,
+        lendingPool,
+        amountDaiToBorrowWei,
+        deployer
+    )
+    await getBorrowUserData(lendingPool , deployer )
+
+    
+}
+
+async function borrowDai(
+    daiAddress ,
+    lendingPool ,
+    amountDaiToBorrow,
+    account
+){
+    const borrowTx = await lendingPool.borrow(
+        daiAddress,
+        amountDaiToBorrow,
+        1,
+        0,
+        account
+    )
+    await borrowTx.wait(1)
+    console.log("Youve borrowed")
 }
 async function getDaiPrice(){
     const daiEthPriceFeed = await ethers.getContractAt(

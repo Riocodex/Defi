@@ -22,6 +22,7 @@ async function main(){
     console.log("Deposited!!!")
 
     //to get how much we want to borrow in eth and convert it to dai
+    
     //borrow time!
     //here we need to know:
     // how much we borrowed, 
@@ -31,6 +32,9 @@ async function main(){
     let { availableBorrowsETH , totalDebtETH } = await getBorrowUserData(
         lendingPool , deployer
     )
+}
+async function getDiePrice(){
+    
 }
 
 async function getBorrowUserData(lendingPool , account ){

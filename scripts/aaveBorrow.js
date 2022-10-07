@@ -21,7 +21,7 @@ async function main(){
     await lendingPool.deposit(wethTokenAddress , AMOUNT , deployer , 0)
     console.log("Deposited!!!")
 
-
+    //to get how much we want to borrow in eth and convert it to dai
     //borrow time!
     //here we need to know:
     // how much we borrowed, 

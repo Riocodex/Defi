@@ -213,6 +213,48 @@
       "artifacts": [
         "IERC20"
       ]
+    },
+    "C:\\Users\\Onwuka Rosario\\blockchain\\defi\\contracts\\interfaces\\AggregatorV3.sol": {
+      "lastModificationDate": 1665175670337,
+      "contentHash": "f2604c84d03a13d7e932ae1217a1cf55",
+      "sourceName": "contracts/interfaces/AggregatorV3.sol",
+      "solcConfig": {
+        "version": "0.6.12",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.6.0"
+      ],
+      "artifacts": [
+        "AggregatorV3Interface"
+      ]
     }
   }
 }

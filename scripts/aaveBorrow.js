@@ -20,7 +20,7 @@ async function main(){
     //now calling the deposit function with the parameters
     await lendingPool.deposit(wethTokenAddress , AMOUNT , deployer , 0)
     console.log("Deposited!!!")
-
+  
     //to get how much we want to borrow in eth and convert it to dai
     
     //borrow time!
@@ -32,9 +32,21 @@ async function main(){
     let { availableBorrowsETH , totalDebtETH } = await getBorrowUserData(
         lendingPool , deployer
     )
+    const daiPrice = await getDaiPrice()
+    const amountDaiToBorrow =
+            availableBorrowsETH.toString() * 0.95 * (1/daiPrice.toNumber())
+    console.log(`You can borrow ${amountDaiToBorrow} DAI`)
 }
-async function getDiePrice(){
-    
+async function getDaiPrice(){
+    const daiEthPriceFeed = await ethers.getContractAt(
+        "AggregatorV3Interface",
+        "0x773616E4d11A78F511299002da57A0a94577F1f4"
+    )
+    const price = (await daiEthPriceFeed.latestRoundData())[1]
+    //the syntax above is to grab a specific index when a function 
+    //seems to be returning more than one value
+    console.log(`the DAI/ETH price is ${price.toString()}`)
+    return price
 }
 
 async function getBorrowUserData(lendingPool , account ){

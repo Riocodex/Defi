@@ -5,3 +5,5 @@ weth is wETH is the ERC-20 compatible and tradable version of ETH and
 2. Borrow another asset : Dai
 3. Repay dai
  dai is a stable coin that has the price of one dollar
+
+ so here is the process

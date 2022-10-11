@@ -16,4 +16,4 @@ weth is wETH is the ERC-20 compatible and tradable version of ETH and
  when converted prints out how much one can borrow
 
  thirdly
- repaying the dai
+ repaying the 
